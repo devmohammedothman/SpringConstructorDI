@@ -2,6 +2,7 @@ package com.selftraining.springdemo.config;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.selftraining.springdemo.DBConnection;
 import com.selftraining.springdemo.Icoach;
 import com.selftraining.springdemo.TennisCoach;
 
@@ -28,6 +29,18 @@ public class SpringConfig {
 		
 		//call methods on tennis coach bean to check setter injection is done
 		System.out.println(tennisCoach.checkTraineeHealth());
+		
+		/*
+		 * Injection of Literal values and read it from properties file
+		 * */
+		//Retrieve bean from spring container
+		
+		DBConnection con = ctx.getBean("connectionDB", DBConnection.class);
+		
+		//read properties values
+		System.out.println("DB Con User Name :"+con.getUserName());
+		System.out.println("\nDB Con Password :"+con.getPassword());
+		
 		
 		//close context
 		ctx.close();

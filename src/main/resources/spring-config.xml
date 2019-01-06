@@ -7,6 +7,9 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
+	<!-- Define properties file -->
+	<context:property-placeholder
+		location="classpath:properties.properties" />
 
 	<!-- define actual bean object that implement coach interface -->
 
@@ -20,10 +23,18 @@
 	<!-- Define Bean of Medical Service -->
 	<bean id="medicalService"
 		class="com.selftraining.springdemo.service.impl.MedicalServiceImpl"></bean>
-		
-		<!--  Define another bean tennis coach that use setter injection for medical service-->
-		<bean id="tennisCoach" class="com.selftraining.springdemo.TennisCoach">
+
+	<!-- Define another bean tennis coach that use setter injection for medical 
+		service -->
+	<bean id="tennisCoach"
+		class="com.selftraining.springdemo.TennisCoach">
 		<property name="medicalService" ref="medicalService"></property>
-		</bean>
+	</bean>
+
+	<bean id="connectionDB"
+		class="com.selftraining.springdemo.DBConnection">
+		<property name="userName" value="${connection.UserName}"></property>
+		<property name="password" value="${connection.Password}"></property>
+	</bean>
 
 </beans>
