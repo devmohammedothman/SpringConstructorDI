@@ -20,5 +20,10 @@
 	<!-- Define Bean of Medical Service -->
 	<bean id="medicalService"
 		class="com.selftraining.springdemo.service.impl.MedicalServiceImpl"></bean>
+		
+		<!--  Define another bean tennis coach that use setter injection for medical service-->
+		<bean id="tennisCoach" class="com.selftraining.springdemo.TennisCoach">
+		<property name="medicalService" ref="medicalService"></property>
+		</bean>
 
 </beans>

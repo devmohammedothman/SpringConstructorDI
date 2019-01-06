@@ -3,6 +3,7 @@ package com.selftraining.springdemo.config;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.selftraining.springdemo.Icoach;
+import com.selftraining.springdemo.TennisCoach;
 
 public class SpringConfig {
 
@@ -21,6 +22,12 @@ public class SpringConfig {
 		
 		//check Constructor Injection done successfully
 		System.out.println(coach.checkTraineeHealth());
+		
+		//retreive another bean tennis coach to check setter injection
+		TennisCoach tennisCoach = ctx.getBean("tennisCoach", TennisCoach.class);
+		
+		//call methods on tennis coach bean to check setter injection is done
+		System.out.println(tennisCoach.checkTraineeHealth());
 		
 		//close context
 		ctx.close();
