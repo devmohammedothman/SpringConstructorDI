@@ -10,11 +10,15 @@
 	<!-- Define properties file -->
 	<context:property-placeholder
 		location="classpath:properties.properties" />
+		
+		<!-- Enable Component Scan to allow spring to scan beans configured with annotations and automatically register it -->
+		<context:component-scan base-package="com.selftraining.springdemo"></context:component-scan>
 
 	<!-- define actual bean object that implement coach interface -->
 
 	<bean id="myCoach"
-		class="com.selftraining.springdemo.FootBallCoach">
+		class="com.selftraining.springdemo.FootBallCoach" 
+		scope="prototype">
 
 		<!--Constructor Injection -->
 		<constructor-arg ref="medicalService"></constructor-arg>
